@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KARBONTECK | Forging Industrial AI</title>
     <!-- CSP: all scripts inlined and hash-locked; no external script sources needed -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'sha256-L1zWd3+tHPEUAwvjNB0WF3rFvZnCFtTf1SxX9KuhhxA=' 'sha256-TBC4ZlNy1hmvkOIHBXQA7IzaxImjB9n+cJrQiwzB1JY='; img-src 'self' data:; connect-src 'none'; frame-src 'none'; base-uri 'self'; form-action 'self';">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'sha256-L1zWd3+tHPEUAwvjNB0WF3rFvZnCFtTf1SxX9KuhhxA=' 'sha256-jRO0MjBjcLxMFGUNnFtJju+uwDwjv6YMZBUg5SopGpo='; img-src 'self' data:; connect-src https://formspree.io; frame-src 'none'; base-uri 'self'; form-action https://formspree.io;">
     <meta name="referrer" content="no-referrer">
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -200,7 +200,7 @@
         .products {
             padding: 0 5% 5rem;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 3rem;
             max-width: 1200px;
             margin: 0 auto;
@@ -373,15 +373,6 @@
             min-height: 130px;
         }
 
-        /* Honeypot - visually hidden, bots fill it, humans don't */
-        .hp-field {
-            position: absolute;
-            left: -9999px;
-            opacity: 0;
-            pointer-events: none;
-            tab-index: -1;
-        }
-
         .submit-row {
             display: flex;
             align-items: center;
@@ -435,6 +426,73 @@
         /* Mobile handling */
         @media (max-width: 768px) {
             .cursor-dot, .cursor-ring { display: none !important; }
+            body.cursor-ready,
+            body.cursor-ready a,
+            body.cursor-ready button,
+            body.cursor-ready .interactive,
+            body.cursor-ready .card { cursor: auto; }
+
+            nav { padding: 1rem 4%; }
+            .logo { font-size: 1.1rem; letter-spacing: 1px; }
+            .status-badge { font-size: 0.65rem; padding: 0.3rem 0.7rem; }
+
+            header { padding: 120px 5% 50px; }
+            h1 { font-size: clamp(1.8rem, 7vw, 3rem); }
+            .hero-subtitle { font-size: 1rem; }
+
+            .about-section { padding: 30px 5% 50px; }
+            .highlight { font-size: 1.2rem; }
+
+            .products { padding: 0 5% 3rem; gap: 2rem; }
+            .card { padding: 2rem 1.5rem; }
+            .product-title { font-size: 1.5rem; }
+            .product-subtitle { font-size: 0.8rem; }
+            .exclusive-badge { font-size: 0.6rem; margin-bottom: 1.5rem; }
+            .product-features li { font-size: 0.9rem; margin-bottom: 1rem; padding-left: 1.2rem; }
+            .product-features li::before { font-size: 0.7rem; }
+
+            .contact-section { padding: 0 5% 3rem; }
+            .contact-section .section-sub { font-size: 0.9rem; margin-bottom: 2rem; }
+            .form-row { grid-template-columns: 1fr; }
+
+            footer { padding: 3rem 5%; font-size: 0.85rem; margin-top: 1rem; }
+        }
+
+        @media (max-width: 480px) {
+            nav { padding: 0.8rem 3%; }
+            .logo { font-size: 0.95rem; }
+            .status-badge { font-size: 0.55rem; padding: 0.25rem 0.6rem; letter-spacing: 0.5px; }
+
+            header { padding: 100px 4% 40px; }
+            h1 { font-size: clamp(1.5rem, 8vw, 2.5rem); }
+            .hero-subtitle { font-size: 0.9rem; line-height: 1.5; }
+
+            .about-section { padding: 20px 4% 40px; }
+            .highlight { font-size: 1.05rem; }
+            .about-section p { font-size: 0.9rem; }
+
+            .products { padding: 0 4% 2rem; gap: 1.5rem; }
+            .card { padding: 1.5rem 1.2rem; border-radius: 12px; }
+            .product-title { font-size: 1.3rem; }
+            .product-subtitle { font-size: 0.75rem; margin-bottom: 1rem; }
+            .exclusive-badge { font-size: 0.55rem; padding: 4px 8px; margin-bottom: 1rem; }
+            .product-features li { font-size: 0.85rem; line-height: 1.4; }
+
+            .contact-section { padding: 0 4% 2rem; }
+            .contact-section h2 { font-size: clamp(1.2rem, 4vw, 1.6rem); }
+            .contact-form { gap: 1rem; }
+            .form-group label { font-size: 0.65rem; }
+            .form-group input, .form-group textarea, .form-group select { padding: 0.75rem 0.85rem; font-size: 0.9rem; }
+            .form-group textarea { min-height: 100px; }
+            .submit-btn { padding: 0.75rem 1.5rem; font-size: 0.8rem; }
+
+            footer { padding: 2.5rem 4%; font-size: 0.75rem; letter-spacing: 1px; }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .products { gap: 2rem; }
+            .card { padding: 2.5rem 1.8rem; }
+            .contact-section { max-width: 600px; }
         }
     </style>
 </head>
@@ -502,13 +560,7 @@
             Have a question or want to know more? Fill in the form below and we'll get back to you.
         </p>
 
-        <form class="contact-form" id="contactForm" novalidate>
-
-            <!-- Honeypot: hidden from humans, bots fill it automatically -->
-            <div class="hp-field" aria-hidden="true">
-                <label for="website">Website</label>
-                <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
-            </div>
+        <form class="contact-form" id="contactForm" action="https://formspree.io/f/mgobzjpa" method="POST" accept-charset="UTF-8" novalidate>
 
             <div class="form-row">
                 <div class="form-group">
@@ -539,6 +591,8 @@
                 <textarea id="fmessage" name="message" placeholder="Tell us what's on your mind..."
                           maxlength="1000" required></textarea>
             </div>
+
+            <input type="text" name="_gotcha" style="display:none">
 
             <div class="submit-row">
                 <button type="submit" class="submit-btn interactive" id="submitBtn">
@@ -621,6 +675,7 @@
         });
 
         // 3. Scroll Animation
+        const animateEls = document.querySelectorAll('.animate-on-scroll');
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -628,51 +683,22 @@
                     observer.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+        }, { threshold: 0.05, rootMargin: "0px 0px 0px 0px" });
 
-        document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+        animateEls.forEach(el => observer.observe(el));
 
-        // ── CONTACT FORM ──────────────────────────────────────────
-        // Security layers:
-        //   1. Honeypot field  — bots fill #website, humans don't
-        //   2. Rate limiting   — max 3 submissions per 10 minutes (localStorage timestamp array)
-        //   3. Input sanitization — strip HTML tags before use
-        //   4. Field validation — required, maxlength, email regex
-        //   5. Char counter    — live feedback, blocks submit over limit
-        //   6. Submit lockout  — button disabled during cooldown
+        // Fallback: reveal elements already in viewport on load
+        requestAnimationFrame(() => {
+            animateEls.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    el.classList.add('visible');
+                    observer.unobserve(el);
+                }
+            });
+        });
 
-        const RATE_LIMIT = { max: 3, windowMs: 10 * 60 * 1000 }; // 3 per 10 min
-
-        function sanitize(str) {
-            return str.replace(/[<>"'`]/g, c => ({'<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#x27;','`':'&#x60;'}[c]));
-        }
-
-        function isValidEmail(email) {
-            return /^[^\s@]{1,64}@[^\s@]{1,253}\.[^\s@]{2,}$/.test(email);
-        }
-
-        function getRateLimitTimestamps() {
-            try {
-                return JSON.parse(localStorage.getItem('kt_form_ts') || '[]');
-            } catch { return []; }
-        }
-
-        function recordSubmission() {
-            const now = Date.now();
-            const timestamps = getRateLimitTimestamps()
-                .filter(t => now - t < RATE_LIMIT.windowMs);
-            timestamps.push(now);
-            try { localStorage.setItem('kt_form_ts', JSON.stringify(timestamps)); } catch {}
-            return timestamps.length;
-        }
-
-        function isRateLimited() {
-            const now = Date.now();
-            const recent = getRateLimitTimestamps().filter(t => now - t < RATE_LIMIT.windowMs);
-            return recent.length >= RATE_LIMIT.max;
-        }
-
-        // Char counter
+        // ── CONTACT FORM (Formspree AJAX) ─────────────────────────
         const msgField  = document.getElementById('fmessage');
         const charCount = document.getElementById('charCount');
         msgField.addEventListener('input', () => {
@@ -681,71 +707,45 @@
             charCount.classList.toggle('over', len >= 1000);
         });
 
-        // Form submit
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
+            const form = this;
+            const status = document.getElementById('formStatus');
+            const btn = document.getElementById('submitBtn');
 
-            const status  = document.getElementById('formStatus');
-            const btn     = document.getElementById('submitBtn');
-
-            function showError(msg) {
-                status.textContent = msg;
-                status.className = 'form-status error';
-            }
-            function showSuccess(msg) {
-                status.textContent = msg;
-                status.className = 'form-status success';
-            }
-
-            // 1. Honeypot check
-            if (document.getElementById('website').value.trim() !== '') {
-                // Silently reject — don't tell the bot it failed
-                showSuccess('Message sent. We\'ll be in touch.');
-                this.reset();
-                return;
-            }
-
-            // 2. Rate limit
-            if (isRateLimited()) {
-                showError('Too many messages. Please wait 10 minutes and try again.');
-                return;
-            }
-
-            // 3. Collect + sanitize
-            const name    = sanitize(document.getElementById('fname').value.trim());
+            const name    = document.getElementById('fname').value.trim();
             const email   = document.getElementById('femail').value.trim();
-            const subject = sanitize(document.getElementById('fsubject').value);
-            const message = sanitize(document.getElementById('fmessage').value.trim());
+            const subject = document.getElementById('fsubject').value;
+            const message = document.getElementById('fmessage').value.trim();
 
-            // 4. Validate
-            if (!name || name.length < 2) {
-                showError('Please enter your name.'); return;
-            }
-            if (!isValidEmail(email)) {
-                showError('Please enter a valid email address.'); return;
-            }
-            if (!subject) {
-                showError('Please select a subject.'); return;
-            }
-            if (message.length < 10) {
-                showError('Message is too short — tell us a bit more.'); return;
-            }
+            if (!name || name.length < 2) { status.textContent = 'Please enter your name.'; status.className = 'form-status error'; return; }
+            if (!/^[^\s@]{1,64}@[^\s@]{1,253}\.[^\s@]{2,}$/.test(email)) { status.textContent = 'Please enter a valid email.'; status.className = 'form-status error'; return; }
+            if (!subject) { status.textContent = 'Please select a subject.'; status.className = 'form-status error'; return; }
+            if (message.length < 10) { status.textContent = 'Message is too short.'; status.className = 'form-status error'; return; }
 
-            // 5. Record + open mailto
-            recordSubmission();
             btn.disabled = true;
+            btn.textContent = 'Sending...';
 
-            const body = `Name: ${name}\nEmail: ${email}\nSubject: ${subject}\n\n${message}`;
-            const mailto = `mailto:karbonteck@gmail.com`
-                + `?subject=${encodeURIComponent('[KarbonTeck] ' + subject)}`
-                + `&body=${encodeURIComponent(body)}`;
-
-            window.location.href = mailto;
-
-            showSuccess('Message sent. We\'ll be in touch.');
-
-            // Re-enable after 30s cooldown
-            setTimeout(() => { btn.disabled = false; }, 30000);
+            fetch(form.action, {
+                method: 'POST',
+                body: new FormData(form),
+                headers: { 'Accept': 'application/json' }
+            }).then(res => {
+                if (res.ok) {
+                    status.textContent = 'Message sent! We\'ll be in touch.';
+                    status.className = 'form-status success';
+                    form.reset();
+                    charCount.textContent = '0 / 1000';
+                } else {
+                    throw new Error();
+                }
+            }).catch(() => {
+                status.textContent = 'Something went wrong. Please try again.';
+                status.className = 'form-status error';
+            }).finally(() => {
+                btn.disabled = false;
+                btn.textContent = 'Send Message';
+            });
         });
     </script>
 </div><!-- /.page-wrapper -->
