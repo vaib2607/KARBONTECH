@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #050608;
+  --color-surface: #0a0c10;
+  --color-steel: #a0abbf;
+  --color-neon: #00ff88;
+  --color-border: rgba(255, 255, 255, 0.1);
+  --font-syncopate: "Syncopate", sans-serif;
+  --font-inter: "Inter", sans-serif;
+  --font-space: "Space Mono", monospace;
+}
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: var(--font-inter);
+    background-color: var(--color-bg);
+    color: #fff;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: var(--color-neon);
+    color: var(--color-bg);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-neon);
+    outline-offset: 2px;
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    background: linear-gradient(135deg, #fff 0%, var(--color-steel) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+/* Custom cursor — only when JS confirms tracking is live */
+body.cursor-ready,
+body.cursor-ready a,
+body.cursor-ready button,
+body.cursor-ready .interactive,
+body.cursor-ready .card {
+  cursor: none;
+}
+
+.hover-active .cursor-dot {
+  transform: scale(0);
+}
+
+.hover-active .cursor-ring {
+  width: 60px;
+  height: 60px;
+  background-color: rgba(0, 255, 136, 0.1);
+  border-color: #00ff88;
+}
+
+/* Hide custom cursor on touch devices */
+@media (hover: none) and (pointer: coarse) {
+  .cursor-dot, .cursor-ring { display: none !important; }
+  body.cursor-ready,
+  body.cursor-ready a,
+  body.cursor-ready button,
+  body.cursor-ready .interactive,
+  body.cursor-ready .card { cursor: auto; }
+}
